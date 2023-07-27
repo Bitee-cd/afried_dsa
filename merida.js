@@ -143,10 +143,10 @@ const archer = new Archer(10, field);
 
 console.log(field.grid);
 // archer.shoot();
-archer.moveRight();
-archer.moveRight();
 // archer.moveRight();
 // archer.moveRight();
 // archer.moveRight();
-archer.shoot();
+// archer.moveRight();
+// archer.moveRight();
+// archer.shoot();
 // console.log(archer.kills); // Output: 2

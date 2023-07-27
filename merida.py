@@ -68,18 +68,18 @@ class Field:
     @staticmethod
     def loadFromFileContents(contents):
         lines = contents.split("/")
-        dimensions = lines[0].strip().split("x")
-        rows = int(dimensions[1])
-        cols = int(dimensions[0])
+        dimensions = lines[0].split("x")
+        rows = int(dimensions[1].strip())
+        cols = int(dimensions[0].strip())
         field = Field(rows, cols)
-
-        for line in lines[1:]:
-            x, y = line.strip()[1:-1].split(",")
-            x = int(x.strip())
-            y = int(y.strip())
+        
+        coordinatesStr = lines[1].strip('( )')
+        coordinatesList = coordinatesStr.split("), (")
+        for pair in coordinatesList:
+            x, y = map(int, pair.split(","))
             field.placeEnemy(x, y)
-
         return field
+
 
     def placeEnemy(self, x, y):
         self.grid[x][y] = Enemy(x, y)
